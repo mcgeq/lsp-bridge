@@ -310,7 +310,7 @@ def _make_uri_win32(path):
         # It's a path on a local drive => 'file:///c:/a/b'
         rest = path.as_posix()[2:].lstrip('/')
         return 'file:///%s%%3A/%s' % (
-            drive[0], urlquote_from_bytes(rest.encode('utf-8')))
+            drive[0].upper(), urlquote_from_bytes(rest.encode('utf-8')))
     else:
         # It's a path on a network drive => 'file://host/share/a/b'
         return 'file:' + urlquote_from_bytes(path.as_posix().encode('utf-8'))
